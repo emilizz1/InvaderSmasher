@@ -17,10 +17,4 @@ public class EnemyMover : MonoBehaviour
     {
         transform.position += moveStep * Time.deltaTime;
     }
-
-    //TODO copy this to new scripts
-    public void SelectedAsTarget()
-    {
-
-    }
 }

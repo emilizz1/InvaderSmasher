@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class TargetManager : MonoBehaviour
 {
+    public static TargetManager instance;
+
     GameObject target;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
         if(target == null)
         {
-            target = FindObjectOfType<EnemyMover>().gameObject;
-            foreach(EnemyMover enemy in FindObjectsOfType<EnemyMover>())
+            target = FindObjectOfType<EnemyHealth>().gameObject;
+            foreach(EnemyHealth enemy in FindObjectsOfType<EnemyHealth>())
             {
                 if(target.transform.position.y > enemy.transform.position.y)
                 {
                     target = enemy.gameObject;
                 }
             }
-            target.GetComponent<EnemyMover>().SelectedAsTarget();
+            target.GetComponent<EnemyHealth>().SelectedAsTarget();
         }
     }
 
