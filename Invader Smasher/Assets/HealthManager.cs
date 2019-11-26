@@ -6,7 +6,7 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour
 {
     public static HealthManager instance;
-    public Sprite selectedYellow, yellow, selectedRed, red, selectedGreen, green, selectedBlue, blue;
+    [SerializeField] Sprite selectedYellow, yellow, selectedRed, red, selectedGreen, green, selectedBlue, blue;
 
     public enum DamageTypes
     {
@@ -28,5 +28,21 @@ public class HealthManager : MonoBehaviour
         {
             enemyHealth.RemoveCurrentHealth();
         }
+    }
+
+    public Sprite GetDamageSprite(DamageTypes type, bool selected)
+    {
+        switch (type)
+        {
+            case (DamageTypes.Yellow):
+                return selected ? selectedYellow : yellow;
+            case (DamageTypes.Red):
+                return selected ? selectedRed : red;
+            case (DamageTypes.Green):
+                return selected ? selectedGreen : green;
+            case (DamageTypes.Blue):
+                return selected ? selectedBlue : blue;
+        }
+        return null;
     }
 }

@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] float spawnTime;
     [SerializeField] List<GameObject> enemies;
 
     private void Start()
     {
-        Spawn();
+        StartCoroutine(Spawning());
+    }
+
+    IEnumerator Spawning()
+    {
+        while (enemies.Count != 0)
+        {
+            Spawn();
+            yield return new WaitForSeconds(spawnTime);
+        }
     }
 
     void Spawn()
     {
-        if(enemies.Count != 0)
+        if (enemies.Count != 0)
         {
             GameObject enemyToSpawn = enemies[Random.Range(0, enemies.Count)];
             Bounds enemyBounds = enemyToSpawn.GetComponent<SpriteRenderer>().bounds;
