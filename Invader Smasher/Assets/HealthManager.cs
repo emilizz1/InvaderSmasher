@@ -28,6 +28,10 @@ public class HealthManager : MonoBehaviour
         {
             enemyHealth.RemoveCurrentHealth();
         }
+        else
+        {
+            enemyHealth.ResetHealth();
+        }
     }
 
     public Sprite GetDamageSprite(DamageTypes type, bool selected)

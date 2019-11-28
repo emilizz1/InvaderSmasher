@@ -1,62 +1,95 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] List<HealthManager.DamageTypes> health;
+    [SerializeField] Sprite selectedSprite, unselectedSprite;
+    [SerializeField] int healthAmount;
+    [SerializeField] List<HealthManager.DamageTypes> healthTypesUsed;
     [SerializeField] Canvas canvas;
     [SerializeField] GameObject damageTypePrefab;
 
     bool selected;
 
+    int damageTaken = 0;
     List<GameObject> damageObjs = new List<GameObject>();
+    List<HealthManager.DamageTypes> health = new List<HealthManager.DamageTypes>();
 
     private void Start()
     {
-        print(health.Count);
+        SetupStartingHealth();
+        
+        UpdateHealth();
+    }
+
+    private void SetupStartingHealth()
+    {
+        for (int i = 0; i < healthAmount; i++)
+        {
+            health.Add(healthTypesUsed[Random.Range(0, healthTypesUsed.Count)]);
+        }
+
         for (int i = 0; i < health.Count; i++)
         {
-            print(i);
-            damageObjs.Add( Instantiate(damageTypePrefab, canvas.transform));
+            damageObjs.Add(Instantiate(damageTypePrefab, canvas.transform));
         }
-        UpdateHealth();
+
+        float fullWidh = (damageObjs.Count - 1) * 3f;
+        for (int i = 0; i < damageObjs.Count; i++)
+        {
+            damageObjs[i].GetComponent<RectTransform>().localPosition = new Vector2(-(fullWidh / 2f) + (i * 3f) , 6.25f);
+        }
     }
 
     public void SelectedAsTarget()
     {
+        GetComponent<SpriteRenderer>().sprite = selectedSprite;
         selected = true;
         UpdateHealth();
     }
 
     public HealthManager.DamageTypes GetCurrentHealth()
     {
-        return health[0];
+        return health[damageTaken];
+    }
+
+    internal void ResetHealth()
+    {
+        damageTaken = 0;
+        UpdateHealth();
     }
 
     public void RemoveCurrentHealth()
     {
-        health.RemoveAt(0);
+        damageTaken++;
+        if(damageTaken == health.Count)
+        {
+            EnemyDefeated();
+        }
         UpdateHealth();
+    }
+
+    void EnemyDefeated()
+    {
+        Destroy(gameObject);
     }
 
     void UpdateHealth()
     {
-        float fullWidh = (damageObjs.Count - 1) * 3f;
-        float size = selected ? 1.5f : 2.5f;
+        float size = selected ? 2.5f : 1.5f;
         for (int i = 0; i < damageObjs.Count; i++)
         {
-            if(health.Count < i)
+            damageObjs[i].GetComponent<Image>().sprite = HealthManager.instance.GetDamageSprite(health[i], selected);
+            damageObjs[i].GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
+            if (i >= damageTaken)
             {
-                damageObjs[i].GetComponent<Image>().sprite = HealthManager.instance.GetDamageSprite(health[i], selected);
-                damageObjs[i].GetComponent<RectTransform>().sizeDelta = new Vector2(size, size);
-                damageObjs[i].GetComponent<RectTransform>().anchoredPosition = new Vector2((fullWidh / 2f) + 3f * i, 6.25f);
+                
+                damageObjs[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
             }
             else
             {
-                damageObjs.Remove(damageObjs[i]);
+                damageObjs[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 0.75f);
             }
         }
     }

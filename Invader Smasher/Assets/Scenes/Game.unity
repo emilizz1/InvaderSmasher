@@ -202,7 +202,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 75657338}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 75657340}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &75657338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +374,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 191418281}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 191418283}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &191418281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,9 +596,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940d84a7d958b0a47b0fbb4bf550f083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 1
+  spawnTime: 2
   enemies:
   - {fileID: 4784935156398005911, guid: da31a87a684086545a1778e9e78d01fd, type: 3}
+  - {fileID: 4784935156398005911, guid: 3469d83af640d534699a5246701e4ced, type: 3}
 --- !u!4 &504539953
 Transform:
   m_ObjectHideFlags: 0
@@ -627,7 +650,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -755,7 +778,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 933816021}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 933816023}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &933816021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -970,7 +1004,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -421090775
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &1205036190
@@ -1097,7 +1131,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1514923924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1514923926}
+        m_MethodName: ButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1514923924
 MonoBehaviour:
   m_ObjectHideFlags: 0
