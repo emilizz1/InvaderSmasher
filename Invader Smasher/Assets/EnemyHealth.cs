@@ -35,10 +35,11 @@ public class EnemyHealth : MonoBehaviour
             damageObjs.Add(Instantiate(damageTypePrefab, canvas.transform));
         }
 
-        float fullWidh = (damageObjs.Count - 1) * 3f;
+        float widthBetweenHealth = 2.7f;
+        float fullWidh = (damageObjs.Count - 1) * widthBetweenHealth;
         for (int i = 0; i < damageObjs.Count; i++)
         {
-            damageObjs[i].GetComponent<RectTransform>().localPosition = new Vector2(-(fullWidh / 2f) + (i * 3f) , 6.25f);
+            damageObjs[i].GetComponent<RectTransform>().localPosition = new Vector2(-(fullWidh / 2f) + (i * widthBetweenHealth) , 6.25f);
         }
     }
 
@@ -77,7 +78,8 @@ public class EnemyHealth : MonoBehaviour
 
     void UpdateHealth()
     {
-        float size = selected ? 2.5f : 1.5f;
+        float notSelectedSize = 2f, selectedSize = 3f;
+        float size = selected ? selectedSize : notSelectedSize;
         for (int i = 0; i < damageObjs.Count; i++)
         {
             damageObjs[i].GetComponent<Image>().sprite = HealthManager.instance.GetDamageSprite(health[i], selected);

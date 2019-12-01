@@ -7,10 +7,16 @@ public class TargetManager : MonoBehaviour
     public static TargetManager instance;
 
     GameObject target;
+    ShipMovement shipMovement;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        shipMovement = FindObjectOfType<ShipMovement>();
     }
 
     private void Update()
@@ -25,6 +31,7 @@ public class TargetManager : MonoBehaviour
                     target = enemy.gameObject;
                 }
             }
+            shipMovement.SetNewTarget(target);
             target.GetComponent<EnemyHealth>().SelectedAsTarget();
         }
     }
