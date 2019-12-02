@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor.iOS;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -73,6 +74,8 @@ public class EnemyHealth : MonoBehaviour
 
     void EnemyDefeated()
     {
+        GameObject particles = Instantiate(Resources.Load("OnDestroyParticles"), transform.position, Quaternion.identity, null) as GameObject;
+        Destroy(particles, 2f);
         Destroy(gameObject);
     }
 
