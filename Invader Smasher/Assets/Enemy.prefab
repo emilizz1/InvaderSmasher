@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d47a245d369b8d441bfcec16b0d1b23a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.8
 --- !u!114 &2989816621544329591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +142,8 @@ MonoBehaviour:
   healthTypesUsed: 0000000001000000
   canvas: {fileID: 6215147429572309890}
   damageTypePrefab: {fileID: 3085242740255627142, guid: f92a91d4a4e477b49a5d628adb85d25b,
+    type: 3}
+  deathParticles: {fileID: 3314772181910877900, guid: 1bdcb532fddc9524bb4413e446160765,
     type: 3}
 --- !u!1 &7786107013150983318
 GameObject:

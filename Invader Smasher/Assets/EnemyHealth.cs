@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] int healthAmount;
     [SerializeField] List<HealthManager.DamageTypes> healthTypesUsed;
     [SerializeField] Canvas canvas;
-    [SerializeField] GameObject damageTypePrefab;
+    [SerializeField] GameObject damageTypePrefab, deathParticles;
 
     bool selected;
 
@@ -74,7 +74,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void EnemyDefeated()
     {
-        GameObject particles = Instantiate(Resources.Load("OnDestroyParticles"), transform.position, Quaternion.identity, null) as GameObject;
+        GameObject particles = Instantiate(deathParticles, transform.position, Quaternion.identity, null) as GameObject;
         Destroy(particles, 2f);
         Destroy(gameObject);
     }
