@@ -72,7 +72,7 @@ public class EnemyHealth : MonoBehaviour
         UpdateHealth();
     }
 
-    void EnemyDefeated()
+    public void EnemyDefeated()
     {
         GameObject particles = Instantiate(onDestroyParticles, transform.position, Quaternion.identity, null) as GameObject;
         Destroy(particles, 2f);
